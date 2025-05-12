@@ -1,3 +1,26 @@
 git add .
-git commit -m "nest.jsfiles"
+git commit -m "nest.add delete operation"
 git push origin main
+
+npm i mysql2
+
+
+
+npm run start:dev
+
+
+
+ sudo npm run migration:generate -- database/migrations/AddcategoryTbl
+ sudo npm run migration:run
+
+
+ sudo npm run migration:generate database/migrations/addnewcol
+ sudo npm run migration:run 
+
+
+ create allrepostry using resource
+   nest g resource category
+
+
+
+ 

@@ -5,24 +5,16 @@ import { ProductModule } from './product/product.module';
 import { config } from 'dotenv';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { datasourceoptions } from 'config/typeorm.config';
+import { CategoryModule } from './category/category.module';
 
-config()
-
+// config()
 @Module({
   imports: [
     ProductModule,
-    ConfigModule,
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: process.env.DB_HOST,
-      port: 5432,
-      username: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME,
-      autoLoadEntities: true,
-      synchronize: false,
-      entities: ['dist/**/*.entity{.ts,.js}'],
-    }),
+    ConfigModule.forRoot({ isGlobal: true }),
+    TypeOrmModule.forRoot(datasourceoptions),
+    CategoryModule,
   ],
   controllers: [AppController],
   providers: [AppService],

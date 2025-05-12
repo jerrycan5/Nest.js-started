@@ -7,8 +7,8 @@ import {
   Column,
 } from 'typeorm';
 
-@Entity('products')
-export class product {
+@Entity()
+export class Product {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -22,14 +22,34 @@ export class product {
   expire_date: Date;
 
   @Column()
-  color: string;
+  colour: string;
+
+  @Column()
+  size: string;
+
+  @Column({
+    type: 'varchar',
+    length: 255,
+    nullable: true,
+    default: null,
+  })
+  nafdac_number: string;
+
+  @Column()
+  manufacture_date: Date;
+
+  // @Column()
+  // expiry_date: Date;
+
+  // @Column()
+  // model: string;
 
   @CreateDateColumn()
-  createdate: Date;
+  createdAt: Date;
 
   @UpdateDateColumn()
-  updatedate: Date;
+  updatedAt: Date;
 
   @DeleteDateColumn()
-  deletedate: Date;
+  deletedAt: Date;
 }
